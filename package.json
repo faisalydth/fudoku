@@ -1,0 +1,24 @@
+{
+	"name": "fudoku-1",
+	"version": "1.0.0",
+	"description": "Number-placement Puzzle Game",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "npx tailwindcss -i ./tailwind.css -o ./public/style.css --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/farrelahmady/fudoku.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/farrelahmady/fudoku/issues"
+	},
+	"homepage": "https://github.com/farrelahmady/fudoku#readme",
+	"devDependencies": {
+		"tailwindcss": "^3.0.24"
+	}
+}
