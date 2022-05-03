@@ -9,10 +9,121 @@
 		<title>Fudoku</title>
 	</head>
 	<body>
-		<section id="main">
-			<h1 class="text-3xl font-bold">
+		<section id="main" class="flex flex-col justify-around h-full w-full max-w-md">
+			<h1 class="text-3xl font-bold text-center">
 				<span class="text-primary-base">F</span>UDOKU
 			</h1>
-		</section>
+
+			<!-- BOARD -->
+			<section id="board" class="grid grid-cols-3 grid-rows-3 outline outline-1 outline-white  aspect-square w-full">
+        <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span class="disable">1</span></div>
+          <div class="cell"><span class="disable">2</span></div>
+          <div class="cell"><span class="disable">3</span></div>
+          <div class="cell"><span class="disable">4</span></div>
+          <div class="cell"><span class="disable">5</span></div>
+          <div class="cell"><span class="disable">6</span></div>
+          <div class="cell"><span class="disable">7</span></div>
+          <div class="cell"><span class="disable">8</span></div>
+          <div class="cell"><span class="disable">9</span></div>
+        </div>
+        <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div><div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+          <div class="cell"><span></span></div>
+        </div>
+      </section>
+
+			<!-- KEY -->
+      <section id="key" class="grid grid-cols-5 gap-3 px-4">
+        <button class="">1<span>9</span></button>
+        <button class="">2<span>9</span></button>
+        <button class="">3<span>9</span></button>
+        <button class="">4<span>9</span></button>
+        <button class="">5<span>9</span></button>
+        <button class="">6<span>9</span></button>
+        <button class="">7<span>9</span></button>
+        <button class="">8<span>9</span></button>
+        <button class="">9<span>9</span></button>
+        <button class="">10<span>9</span></button>
+      </section>
+
+      <script src="script.js"></script>
 	</body>
 </html>

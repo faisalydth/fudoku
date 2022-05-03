@@ -10,6 +10,33 @@
 		@apply text-accent-dark;
 	}
 	body {
-		@apply flex justify-center h-[100vh];
+		@apply flex justify-center h-[100vh] p-4 w-full;
 	}
+
+	table {
+		@apply border border-white w-full;
+	}
+}
+
+.cell {
+	@apply flex justify-center items-center  w-full aspect-square p-1 outline outline-[0.5px] outline-accent-base leading-none;
+}
+
+.cell > span {
+	@apply flex justify-center items-center w-full h-full rounded-full bg-white transition-all duration-300;
+}
+.cell > span.disable {
+	@apply bg-accent-light;
+}
+
+.cell > span.active,
+#key > button.active {
+	@apply bg-primary-base text-accent-light;
+}
+
+#key > button {
+	@apply relative rounded-full aspect-square bg-primary-light text-center  text-xl font-semibold transition-all duration-300;
+}
+#key > button > span {
+	@apply absolute -bottom-0 left-1/2 -translate-x-1/2 text-[10px] leading-4 text-accent-base font-normal;
 }
