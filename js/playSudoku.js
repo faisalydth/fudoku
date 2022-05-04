@@ -52,15 +52,6 @@ function drawSudoku(sudoku) {
 
 /* ================================================== */
 
-/* Function to generate random integer */
-function randInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-/* ================================================== */
-
 /* Function to get sudoku input from user */
 function getSudoku() {
   let inputSudoku = [];

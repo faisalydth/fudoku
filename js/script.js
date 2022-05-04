@@ -1,9 +1,11 @@
 const cells = document.querySelectorAll(".cell span");
 const keyBtns = document.querySelectorAll("#key button");
 
-const randInt = (min, max) => {
-	// min and max included
-	return Math.floor(Math.random() * (max - min + 1) + min);
+/* Function to generate random integer */
+function randInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const activate = (elm) => {
@@ -38,14 +40,6 @@ const assignValue = (value) => {
 			: "";
 	}
 };
-
-// init cell
-cells.forEach((cell) => {
-	let value = randInt(-9, 9);
-	value > 0
-		? ((cell.textContent = value), cell.classList.add("disable"))
-		: (cell.textContent = "");
-});
 
 // event for cell
 cells.forEach((cell) => {
@@ -145,6 +139,6 @@ document.addEventListener("keydown", (key) => {
 			document.querySelectorAll("#selected").forEach((el) => {
 				el.id = "";
 			});
-		} catch (error) {}
+		} catch (error) { }
 	}
 });
