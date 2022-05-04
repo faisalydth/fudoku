@@ -1,8 +1,57 @@
 const timer = document.querySelectorAll("#timer span span");
+const hint = document.querySelector("#btns #hint");
+const check = document.querySelector("#btns #check");
+
+/* ================================================== */
 
 /* Init sudoku game */
 let arrTimer = [0, 0, 0];
 drawSudoku(sudoku);
+
+/* ================================================== */
+
+/* Get help for the answer (only 3 chance in a game) */
+hint.addEventListener("click", () => {
+  const hintRemaining = hint.querySelector("span");
+  let hintRemainLeft = hintRemaining.innerHTML;
+  if (hintRemainLeft > 0) {
+    deactivate();
+    let result = generateSudoku(sudoku);
+    while (result == undefined) {
+      result = generateSudoku(sudoku);
+    };
+    let lineSudoku = rearrgSudoku(sudoku);
+    for (let i = 0; i < cells.length; i++) {
+      if (lineSudoku[i] != 0 && cells[i].id == "selected" && cells[i].classList.contains("disable") == false) {
+        cells[i].classList.add("disable");
+        cells[i].classList.add("active");
+        cells[i].innerHTML = lineSudoku[i];
+        hintRemainLeft--;
+        hintRemaining.innerHTML = hintRemainLeft;
+      };
+    };
+  };
+});
+
+/* Validate the answer before completing the game (only 3 chance in a game) */
+check.addEventListener("click", () => {
+  const checkRemaining = check.querySelector("span");
+  let checkRemainLeft = checkRemaining.innerHTML;
+  if (checkRemainLeft > 0) {
+    deactivate();
+    let inputSudoku = getSudoku();
+    validateSudoku(inputSudoku);
+    setTimeout(() => {
+      for (let i = 0; i < cells.length; i++) {
+        if (cells[i].classList.contains("not-valid")) {
+          cells[i].classList.remove("not-valid");
+        };
+      };
+    }, 4000);
+    checkRemainLeft--;
+    checkRemaining.innerHTML = checkRemainLeft;
+  };
+});
 
 /* ================================================== */
 
@@ -42,7 +91,7 @@ function rearrgSudoku(sudoku) {
 
 /* Function to draw sudoku grid in board game */
 function drawSudoku(sudoku) {
-  // clearSudoku(sudoku, 7, 8);
+  // clearSudoku(sudoku, 8, 9);
   clearSudoku(sudoku, 3, 5);
   let lineSudoku = rearrgSudoku(sudoku);
   for (let i = 0; i < 81; i++) {

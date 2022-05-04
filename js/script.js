@@ -86,9 +86,7 @@ function validateSudoku(sudoku) {
 	// Apply validation to board game
 	for (let i = 0; i < 81; i++) {
 		if (lineValidSudoku[i] == -1) {
-			if (cells[i].classList.contains("disable") == false) {
-				cells[i].classList.add("not-valid");
-			};
+			cells[i].classList.add("not-valid");
 		};
 	};
 };

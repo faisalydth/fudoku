@@ -17,6 +17,14 @@
 /* NEED TO EDIT: COMPILING WITH TAILWIND */
 #board>.grid>.cell>span.not-valid {
   background-color: red;
+  color: white;
+}
+
+/* NEED TO EDIT: COMPILING WITH TAILWIND */
+#board>.grid>.cell>span.disable.not-valid {
+  --tw-bg-opacity: 1;
+  background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
+  color: red;
 }
 
 *,
