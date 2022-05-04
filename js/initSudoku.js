@@ -1,6 +1,6 @@
 /* Generate sudoku */
 let sudoku = initSudoku();
-let iterCount = 1;
+// let iterCount = 1;
 let num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 generateSudoku(sudoku);
 
@@ -108,7 +108,7 @@ function isValidSudoku(sudoku) {
 
 /* ================================================== */
 
-/* Function to print generate sudoku iteration */
+/* Function to print iteration count of generated sudoku */
 function printIter() {
   console.clear();
   console.log("Iteration : " + iterCount);
