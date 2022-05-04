@@ -30,13 +30,16 @@
 }
 
 .cell > span.active,
-#key > button.active {
+#key button.active {
 	@apply bg-primary-base text-accent-light;
 }
 
-#key > button {
-	@apply relative rounded-full aspect-square bg-primary-light text-center  text-xl font-semibold transition-all duration-300;
+#key > div {
+	@apply relative;
 }
-#key > button > span {
+#key button {
+	@apply w-full rounded-full aspect-square bg-primary-light text-center  text-xl font-semibold transition-all duration-300;
+}
+#key button ~ span {
 	@apply absolute -bottom-0 left-1/2 -translate-x-1/2 text-[10px] leading-4 text-accent-base font-normal;
 }
