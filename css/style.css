@@ -9,24 +9,6 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
-/* NEED TO EDIT: COMPILING WITH TAILWIND */
-.hidden {
-  display: none;
-}
-
-/* NEED TO EDIT: COMPILING WITH TAILWIND */
-#board>.grid>.cell>span.not-valid {
-  background-color: red;
-  color: white;
-}
-
-/* NEED TO EDIT: COMPILING WITH TAILWIND */
-#board>.grid>.cell>span.disable.not-valid {
-  --tw-bg-opacity: 1;
-  background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
-  color: red;
-}
-
 *,
 ::before,
 ::after {
@@ -536,10 +518,10 @@ table {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  max-width: 24rem;
+	max-height: 100%;
+	min-height: 90%;
+	max-width: 480px;
+	width: 90%;
   overflow: auto;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
@@ -669,12 +651,20 @@ table {
   flex-direction: column;
 }
 
+.justify-center {
+	justify-content: center
+}
+
 .justify-between{
   justify-content: space-between;
 }
 
 .justify-around{
   justify-content: space-around;
+}
+
+.items-center {
+	align-items: center
 }
 
 .gap-2{
@@ -833,11 +823,15 @@ table {
   color: hsl(251 5% 94% / var(--tw-text-opacity));
 }
 
-.cell > span.wrong{
+.cell > span.not-valid{
   --tw-bg-opacity: 1;
   background-color: rgb(225 29 72 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(251 5% 94% / var(--tw-text-opacity));
+}
+
+.cell > span.disable.not-valid{
+  --tw-bg-opacity: 0.7;
 }
 
 #key > div{
@@ -907,4 +901,56 @@ table {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
+}
+
+#difficulty-opt {
+  margin-top: 1rem;
+}
+
+#difficulty {
+  border: 1px solid;
+  border-radius: 0.25rem;
+  min-width: 10rem;
+}
+
+#new-game button {
+  border: 1px solid;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+#btns>button {
+  padding: 0.25rem 1rem;
+}
+
+#btns>button>span {
+  display: flex;
+  height: 1.25rem;
+  width: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  --tw-bg-opacity: 1;
+  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(251 5% 94% / var(--tw-text-opacity));
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+#btns>button>span.disable{
+  --tw-bg-opacity: 1;
+  background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
+  --tw-text-opacity: 0.3;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+#fudoku-circle {
+	padding: 0.25rem;
+	border-radius: 50%;
+	max-height: 100px;
+	background-color: white;
 }

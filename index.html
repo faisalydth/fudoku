@@ -3,362 +3,368 @@
 
 <head>
 
-  <!-- Metadata -->
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Faisal Adam Yudithia & Farrel Ahmad Yudithia" />
+	<!-- Metadata -->
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="Faisal Adam Yudithia & Farrel Ahmad Yudithia" />
 
-  <!-- Title -->
-  <title>Fudoku</title>
-  <link rel="shortcut icon" type="image/x-icon" href="./img/ico/fudoku-full-wbg.ico" />
+	<!-- Title -->
+	<title>Fudoku</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./img/ico/fudoku-full-wbg.ico" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-  <link rel="stylesheet" href="./css/style.css" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+	<link rel="stylesheet" href="./css/style.css" />
 
-  <!-- Icon -->
-  <script src="https://kit.fontawesome.com/5661195cd6.js" crossorigin="anonymous"></script>
+	<!-- Icon -->
+	<script src="https://kit.fontawesome.com/5661195cd6.js" crossorigin="anonymous"></script>
 
-  <!-- JavaScript -->
-  <script src="./js/initSudoku.js"></script>
+	<!-- JavaScript -->
+	<script src="./js/initSudoku.js"></script>
 
 </head>
 
 <body>
 
-  <section id="main" class="flex flex-col justify-around h-full w-full max-w-md">
-    <header class="border-b-4 border-accent-dark relative">
-      <!-- NAVIGATION BUTTON LEFT -->
-				<div class="absolute left-0 mx-2">
+	<section id="main" class="flex flex-col justify-around h-full w-full max-w-md">
+		<header class="border-b-4 border-accent-dark relative">
+			<!-- NAVIGATION BUTTON LEFT -->
+			<div class="absolute left-0 mx-2">
+				<!-- Button -->
+				<button class="nav-bttn ">
+					<i class="uil uil-question-circle"></i>
+				</button>
+
+				<!-- Popup -->
+				<section class="popup">
+					<div id="game-info" class="popup-container">
+						<button class="popup-close">
+							<i class="uil uil-times"></i>
+						</button>
+
+						<h2 class="popup-title">CARA BERMAIN</h2>
+
+						<div class="flex flex-col gap-2 mb-4">
+							<p>
+								<b><span class="text-primary-base">F</span>UDOKU</b>
+								adalah permainan teka-teki klasik Sudoku yang berasal dari Jepang.
+								Permainan ini melibatkan angka, namun tidak perlu matematika.
+							</p>
+							<p>
+								Dalam permainan ini, telah disediakan kotak berukuran 9&times;9
+								yang diantaranya sudah terisi angka bantuan.
+							</p>
+							<p>
+								Tugas pemain adalah untuk mengisi semua kotak yang masih kosong
+								dengan angka dari 1 sampai 9 dengan ketentuan tidak boleh angka
+								yang sama di setiap baris, kolom, dan kotak 3&times;3 di papan permainan.
+							</p>
+						</div>
+
+						<div id="new-game" class="flex flex-col items-center gap-4">
+
+							<div id="difficulty-opt" class="flex flex-col items-center">
+								<label for="difficulty">
+									Pilih Tingkat Kesulitan:
+								</label>
+								<select id="difficulty" class="text-center border-black">
+									<option value="1">Mudah</option>
+									<option value="2">Sedang</option>
+									<option value="3">Sulit</option>
+								</select>
+							</div>
+							<button class="border-black">
+								Mulai Permainan Baru
+							</button>
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<h1 class="text-3xl font-bold text-center">
+				<span class="text-primary-base">F</span>UDOKU
+			</h1>
+
+			<div class="absolute top-0 right-0 mx-2">
+				<div class="inline-block">
 					<!-- Button -->
-					<button class="nav-bttn ">
-						<i class="uil uil-question-circle"></i>
+					<button class="nav-bttn">
+						<i class="uil uil-info-circle"></i>
 					</button>
 
 					<!-- Popup -->
 					<section class="popup hidden">
-						<div id="game-info" class="popup-container">
+						<div id="game-stats" class="popup-container">
 							<button class="popup-close">
-								<i class="uil uil-times"></i>
+								<i id="close" class="uil uil-times"></i>
 							</button>
 
-							<h2 class="popup-title">CARA BERMAIN</h2>
+							<h2 class="popup-title">STATISTIK PERMAINAN</h2>
 
-							<div class="flex flex-col gap-2 mb-4">
-								<p>
-									Tebak <b><span class="text-primary-base">F</span>UDOKU</b> dalam 6
-									kesempatan. Permainan ini berisi 6000+ kata rahasia.
-								</p>
-								<p>
-									Setiap tebakan harus merupakan kata dengan 5 huruf yang
-									tersedia di KBBI. Tekan tombol ENTER untuk mengirimkan
-									jawaban.
-								</p>
-								<p>
-									Setelah jawaban dikirimkan, warna kotak akan berubah untuk
-									menunjukkan seberapa dekat tebakanmu dari kata rahasia.
-								</p>
-							</div>
-
-							<div>
-								<h3 class="">Contoh</h3>
-								<p>Kata rahasia (yang ditebak) adalah <b>SEMUA</b>.</p>
-								<div class="flex gap-1 py-2">
-									<span class="board-char-ex box-grey">L</span>
-									<span class="board-char-ex box-grey">A</span>
-									<span class="board-char-ex box-green">M</span>
-									<span class="board-char-ex box-grey">P</span>
-									<span class="board-char-ex box-orange">U</span>
+							<div class="flex justify-between text-center gap-4 mb-4">
+								<div>
+									<p class="stats" id="stats-game">0</p>
+									<p>Dimainkan</p>
 								</div>
-								<div class="flex flex-col">
-									<p>Huruf <b>M</b> ada dan posisinya sudah tepat.</p>
-									<p>Huruf <b>U</b> ada dan posisinya belum tepat.</p>
-									<p>
-										Huruf <b>L</b>, <b>A</b>, dan <b>P</b> tidak ada di kata
-										rahasia.
-									</p>
+								<div>
+									<p class="stats" id="stats-won">0</p>
+									<p>% Menang</p>
+								</div>
+								<div>
+									<p class="stats" id="stats-str-cur">0</p>
+									<p>Runtutan<br />Saat Ini</p>
+								</div>
+								<div>
+									<p class="stats" id="stats-str-max">0</p>
+									<p>Runtutan<br />Maksimum</p>
 								</div>
 							</div>
-              
+
+							<div class="flex flex-col gap-2">
+								<h3>Distribusi Tebakan</h3>
+								<div class="dist">
+									<p>1</p>
+									<p class="dist-ans box-grey">0</p>
+								</div>
+								<div class="dist">
+									<p>2</p>
+									<p class="dist-ans box-grey">0</p>
+								</div>
+								<div class="dist">
+									<p>3</p>
+									<p class="dist-ans box-grey">0</p>
+								</div>
+								<div class="dist">
+									<p>4</p>
+									<p class="dist-ans box-grey">0</p>
+								</div>
+								<div class="dist">
+									<p>5</p>
+									<p class="dist-ans box-grey">0</p>
+								</div>
+								<div class="dist">
+									<p>6</p>
+									<p class="dist-ans box-grey">0</p>
+								</div>
+							</div>
 						</div>
 					</section>
 				</div>
 
-      <h1 class="text-3xl font-bold text-center">
-        <span class="text-primary-base">F</span>UDOKU
-      </h1>
+				<div class="inline-block">
+					<!-- Button -->
+					<button class="nav-bttn">
+						<i class="uil uil-setting"></i>
+					</button>
 
-      <div class="absolute top-0 right-0 mx-2">
-					<div class="inline-block">
-						<!-- Button -->
-						<button class="nav-bttn">
-							<i class="uil uil-info-circle"></i>
-						</button>
+					<!-- Popup -->
+					<section class="popup hidden">
+						<div id="game-sets" class="popup-container flex flex-col justify-between">
+							<button class="popup-close">
+								<i class="uil uil-times"></i>
+							</button>
 
-						<!-- Popup -->
-						<section class="popup hidden">
-							<div id="game-stats" class="popup-container">
-								<button class="popup-close">
-									<i id="close" class="uil uil-times"></i>
-								</button>
+							<div>
+								<h2 class="popup-title">PENGATURAN</h2>
 
-								<h2 class="popup-title">STATISTIK PERMAINAN</h2>
-
-								<div class="flex justify-between text-center gap-4 mb-4">
+								<div class="flex justify-between gap-8 pb-2 border-b-2 border-black dark:border-white">
 									<div>
-										<p class="stats" id="stats-game">0</p>
-										<p>Dimainkan</p>
+										<h3>Mode Gelap</h3>
+										<p class="text-xxs md:text-xs">
+											Ubah tampilan warna aplikasi menjadi gelap
+										</p>
 									</div>
-									<div>
-										<p class="stats" id="stats-won">0</p>
-										<p>% Menang</p>
-									</div>
-									<div>
-										<p class="stats" id="stats-str-cur">0</p>
-										<p>Runtutan<br />Saat Ini</p>
-									</div>
-									<div>
-										<p class="stats" id="stats-str-max">0</p>
-										<p>Runtutan<br />Maksimum</p>
-									</div>
-								</div>
 
-								<div class="flex flex-col gap-2">
-									<h3>Distribusi Tebakan</h3>
-									<div class="dist">
-										<p>1</p>
-										<p class="dist-ans box-grey">0</p>
-									</div>
-									<div class="dist">
-										<p>2</p>
-										<p class="dist-ans box-grey">0</p>
-									</div>
-									<div class="dist">
-										<p>3</p>
-										<p class="dist-ans box-grey">0</p>
-									</div>
-									<div class="dist">
-										<p>4</p>
-										<p class="dist-ans box-grey">0</p>
-									</div>
-									<div class="dist">
-										<p>5</p>
-										<p class="dist-ans box-grey">0</p>
-									</div>
-									<div class="dist">
-										<p>6</p>
-										<p class="dist-ans box-grey">0</p>
-									</div>
+									<label class="switch">
+										<input id="dark-mode" type="checkbox" class="hidden" />
+										<div class="slider"></div>
+									</label>
 								</div>
 							</div>
-						</section>
-					</div>
 
-					<div class="inline-block">
-						<!-- Button -->
-						<button class="nav-bttn">
-							<i class="uil uil-setting"></i>
-						</button>
+							<div>
+								<h3 class="text-center mb-2 md:mb-4">Informasi Aplikasi</h3>
 
-						<!-- Popup -->
-						<section class="popup hidden">
-							<div id="game-sets" class="popup-container flex flex-col justify-between">
-								<button class="popup-close">
-									<i class="uil uil-times"></i>
-								</button>
-
-								<div>
-									<h2 class="popup-title">PENGATURAN</h2>
-
-									<div class="flex justify-between gap-8 pb-2 border-b-2 border-black dark:border-white">
-										<div>
-											<h3>Mode Gelap</h3>
-											<p class="text-xxs md:text-xs">
-												Ubah tampilan warna aplikasi menjadi gelap
-											</p>
-										</div>
-
-										<label class="switch">
-											<input id="dark-mode" type="checkbox" class="hidden" />
-											<div class="slider"></div>
-										</label>
-									</div>
+								<div class="text-center mb-2 md:mb-4 flex flex-col items-center">
+									<img id="fudoku-circle" class="mb-4" src="./img/png/fudoku-circle-wbg.png" alt="">
+									<p class="text-xs md:text-sm">
+										developed by<br>
+										<a href="https://github.com/faisalydth" target="_blank">
+											<!-- <i class="uil uil-github mr-1"></i> -->
+											<i class="fa-brands fa-github"></i>&nbsp;faisalydth
+										</a>
+										&#215;
+										<a href="https://github.com/farrelahmady" target="_blank">
+											<!-- <i class="uil uil-github mr-1"></i> -->
+											<i class="fa-brands fa-github"></i>&nbsp;farrelahmady
+										</a>
+									</p>
 								</div>
 
-								<div>
-									<h3 class="text-center mb-2 md:mb-4">Informasi Aplikasi</h3>
-
-									<div class="mb-2 md:mb-4">
+								<div class="text-center mb-2 md:mb-4">
+									<div class="text-xxs md:text-sm text-slate-500">
+										<p>First release v1.0.0 - 8 Mei 2022</p>
+										<!-- <p>Last update v1.0.0 - 8 Mei 2022</p> -->
+										<!-- <p>Fixed minor bugs</p> -->
 										<p>
-											<b>KAT<span style="color: red">F</span>A</b> by
-											<a href="https://github.com/faisalydth" target="_blank"><i
-													class="uil uil-github mr-1"></i>faisalydth
+											<a href="https://github.com/faisalydth/fudoku" target="_blank"
+												class="text-xxs md:text-xs text-slate-400">
+												[Lihat Source Code]
 											</a>
-											&#215;
-											<a href="https://github.com/farrelfay" target="_blank"><i
-													class="uil uil-github mr-1"></i>farrelfay</a>
-										</p>
-
-										<div class="text-xxs md:text-sm text-slate-500">
-											<p>v1.0.0 - 17 April 2022</p>
-											<p>
-												v1.1.0 - 24 April 2022
-												<a href="https://github.com/faisalydth/katla-imitation" target="_blank"
-													class="text-xxs md:text-xs text-slate-400">
-													[Lihat Source Code]
-												</a>
-											</p>
-										</div>
-									</div>
-
-									<div>
-										<p class="text-xxs md:text-xs text-center">
-											Inspired by Katla & Wordle
 										</p>
 									</div>
 								</div>
+
+								<div>
+									<p class="text-xxs md:text-xs text-center">
+										Faisalydth World
+									</p>
+								</div>
 							</div>
-						</section>
-					</div>
+						</div>
+					</section>
 				</div>
-    </header>
+			</div>
+		</header>
 
-    <!-- TIMER -->
-    <p id="timer" class="text-center">
-      <!-- /* NEED TO EDIT: SMALL FONT SIZE FOR H, M, S */ -->
-      <span class="hidden"><span>0</span>h</span>
-      <span class="hidden"><span>0</span>m</span>
-      <span><span>0</span>s</span>
-    </p>
+		<!-- TIMER -->
+		<p id="timer" class="text-center">
+			<!-- /* NEED TO EDIT: SMALL FONT SIZE FOR H, M, S */ -->
+			<span class="hidden"><span>0</span>h</span>
+			<span class="hidden"><span>0</span>m</span>
+			<span><span>0</span>s</span>
+		</p>
 
-    <!-- BOARD -->
-    <section id="board" class="grid grid-cols-3 grid-rows-3 outline outline-1 outline-white  aspect-square w-full">
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-      <div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-        <div class="cell"><span></span></div>
-      </div>
-    </section>
+		<!-- BOARD -->
+		<section id="board" class="grid grid-cols-3 grid-rows-3 outline outline-1 outline-white  aspect-square w-full">
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+			<div class="grid grid-cols-3 grid-rows-3  aspect-square outline outline-1 outline-primary-base">
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+				<div class="cell"><span></span></div>
+			</div>
+		</section>
 
-    <!-- BUTTON -->
-    <section id="btns" class="text-center">
-      <!-- /* NEED TO EDIT: BUTTON STYLE */ -->
-      <button id="hint" class="bg-accent-light">Hint<span>3</span></button>
-      <button id="check" class="bg-accent-light">Check<span>3</span></button>
-    </section>
+		<!-- BUTTON -->
+		<section id="btns" class="flex justify-center items-center gap-4">
+			<button id="hint" class="flex justify-center items-center">Hint&nbsp;<span>3</span></button>
+			<button id="check" class="flex justify-center items-center">Check&nbsp;<span>3</span></button>
+		</section>
 
-    <!-- KEY -->
-    <section id="key" class="grid grid-cols-5 gap-3 px-4">
-      <div><button>1</button><span>0</span></div>
-      <div><button>2</button><span>0</span></div>
-      <div><button>3</button><span>0</span></div>
-      <div><button>4</button><span>0</span></div>
-      <div><button>5</button><span>0</span></div>
-      <div><button>6</button><span>0</span></div>
-      <div><button>7</button><span>0</span></div>
-      <div><button>8</button><span>0</span></div>
-      <div><button>9</button><span>0</span></div>
-      <div><button id="delete"><i class="fa-solid fa-xmark"></i></button></div>
-    </section>
+		<!-- KEY -->
+		<section id="key" class="grid grid-cols-5 gap-3 px-4">
+			<div><button>1</button><span>0</span></div>
+			<div><button>2</button><span>0</span></div>
+			<div><button>3</button><span>0</span></div>
+			<div><button>4</button><span>0</span></div>
+			<div><button>5</button><span>0</span></div>
+			<div><button>6</button><span>0</span></div>
+			<div><button>7</button><span>0</span></div>
+			<div><button>8</button><span>0</span></div>
+			<div><button>9</button><span>0</span></div>
+			<div><button id="delete"><i class="fa-solid fa-xmark"></i></button></div>
+		</section>
 
-    <!-- JavaScript -->
-    <script src="./js/script.js"></script>
-    <script src="./js/playSudoku.js"></script>
+		<!-- JavaScript -->
+		<script src="./js/script.js"></script>
+		<script src="./js/playSudoku.js"></script>
+
+	</section>
 
 </body>
 

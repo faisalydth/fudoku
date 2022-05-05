@@ -1,3 +1,5 @@
+const navBttn = document.querySelectorAll(".nav-bttn");
+const popupClose = document.querySelectorAll(".popup-close");
 const cells = document.querySelectorAll(".cell span");
 const keyBtns = document.querySelectorAll("#key button");
 
@@ -34,7 +36,9 @@ const assignValue = (value) => {
 	const selectedCell = document.querySelector(".cell #selected");
 	if (selectedCell && !selectedCell.classList.contains("disable")) {
 		selectedCell.textContent = value;
-		console.log(selectedCell.textContent);
+		cells.forEach((cell) => {
+			cell.classList.remove("not-valid");
+		});
 		value != ""
 			? activate([...cells].filter((elm) => elm.textContent == value))
 			: "";
@@ -216,6 +220,42 @@ document.addEventListener("keydown", (key) => {
 			document.querySelectorAll("#selected").forEach((el) => {
 				el.id = "";
 			});
-		} catch (error) {}
+		} catch (error) { }
 	}
+});
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+	document.getElementById("difficulty-list").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function (event) {
+	if (!event.target.matches('.dropdown-button')) {
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
+}
+
+// POPUP
+// Add click listener each navigation button to open n close popup window
+navBttn.forEach((navBttn) => {
+	navBttn.addEventListener("click", () => {
+		const parent = navBttn.parentElement;
+		const popup = parent.querySelector(".popup");
+		popup.classList.remove("hidden");
+	});
+});
+popupClose.forEach((close) => {
+	close.addEventListener("click", () => {
+		const parent = close.parentElement;
+		parent.parentElement.classList.add("hidden");
+	});
 });

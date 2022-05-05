@@ -1,18 +1,47 @@
+const newGame = document.querySelector("#new-game button");
 const timer = document.querySelectorAll("#timer span span");
 const hint = document.querySelector("#btns #hint");
+const hintRemaining = hint.querySelector("span");
 const check = document.querySelector("#btns #check");
+const checkRemaining = check.querySelector("span");
 
 /* ================================================== */
 
 /* Init sudoku game */
+let playCount = 0;
 let arrTimer = [0, 0, 0];
-drawSudoku(sudoku);
+newGame.addEventListener("click", () => {
+  if (playCount == 0) {
+    drawSudoku(sudoku);
+    setInterval(runTimer, 1000);
+  } else {
+    sudoku = initSudoku();
+    let result = generateSudoku(sudoku);
+    while (result == undefined) {
+      result = generateSudoku(sudoku);
+    };
+    drawSudoku(sudoku);
+    // Reset timer
+    arrTimer = [0, 0, 0];
+    timer[0].parentElement.classList.add("hidden");
+    timer[1].parentElement.classList.add("hidden");
+    timer[0].innerHTML = arrTimer[0];
+    timer[1].innerHTML = arrTimer[1];
+    timer[2].innerHTML = arrTimer[2];
+    // Reset hint and check
+    hintRemaining.innerHTML = 3;
+    hintRemaining.classList.remove("disable");
+    checkRemaining.innerHTML = 3;
+    checkRemaining.classList.remove("disable");
+  };
+  popupClose[0].click();
+  playCount++;
+});
 
 /* ================================================== */
 
 /* Get help for the answer (only 3 chance in a game) */
 hint.addEventListener("click", () => {
-  const hintRemaining = hint.querySelector("span");
   let hintRemainLeft = hintRemaining.innerHTML;
   if (hintRemainLeft > 0) {
     deactivate();
@@ -22,36 +51,50 @@ hint.addEventListener("click", () => {
     };
     let lineSudoku = rearrgSudoku(sudoku);
     for (let i = 0; i < cells.length; i++) {
+      cells[i].classList.remove("not-valid");
       if (lineSudoku[i] != 0 && cells[i].id == "selected" && cells[i].classList.contains("disable") == false) {
+        console.log(lineSudoku[i]);
         cells[i].classList.add("disable");
         cells[i].classList.add("active");
         cells[i].innerHTML = lineSudoku[i];
+        for (let j = 0; j < cells.length; j++) {
+          cells[j].textContent == lineSudoku[i]
+            ? cells[j].classList.add("active")
+            : "";
+        };
         hintRemainLeft--;
         hintRemaining.innerHTML = hintRemainLeft;
       };
     };
   };
+  if (hintRemainLeft == 0) {
+    hintRemaining.classList.add("disable");
+  };
 });
 
 /* Validate the answer before completing the game (only 3 chance in a game) */
 check.addEventListener("click", () => {
-  const checkRemaining = check.querySelector("span");
   let checkRemainLeft = checkRemaining.innerHTML;
   if (checkRemainLeft > 0) {
     deactivate();
     let inputSudoku = getSudoku();
     validateSudoku(inputSudoku);
-    setTimeout(() => {
-      for (let i = 0; i < cells.length; i++) {
-        if (cells[i].classList.contains("not-valid")) {
-          cells[i].classList.remove("not-valid");
-        };
-      };
-    }, 4000);
+    // setTimeout(notValid, 5000);
     checkRemainLeft--;
     checkRemaining.innerHTML = checkRemainLeft;
+  }
+  if (checkRemainLeft == 0) {
+    checkRemaining.classList.add("disable");
   };
 });
+
+function notValid() {
+  for (let i = 0; i < cells.length; i++) {
+    if (cells[i].classList.contains("not-valid")) {
+      cells[i].classList.remove("not-valid");
+    };
+  };
+};
 
 /* ================================================== */
 
@@ -91,16 +134,26 @@ function rearrgSudoku(sudoku) {
 
 /* Function to draw sudoku grid in board game */
 function drawSudoku(sudoku) {
-  // clearSudoku(sudoku, 8, 9);
-  clearSudoku(sudoku, 3, 5);
+  let difficulty = document.querySelector("#difficulty").selectedOptions[0].value;
+  let level;
+  if (difficulty == 1) {
+    level = [6, 7];
+  } else if (difficulty == 2) {
+    level = [3, 6];
+  } else if (difficulty == 3) {
+    level = [2, 3];
+  };
+  clearSudoku(sudoku, level[0], level[1]);
   let lineSudoku = rearrgSudoku(sudoku);
+  deactivate();
   for (let i = 0; i < 81; i++) {
+    cells[i].classList.remove("disable");
+    cells[i].innerHTML = null;
     if (lineSudoku[i] != 0) {
       cells[i].classList.add("disable");
       cells[i].innerHTML = lineSudoku[i];
     };
   };
-  setInterval(runTimer, 1000);
 };
 
 /* ================================================== */
