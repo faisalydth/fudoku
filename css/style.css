@@ -9,6 +9,24 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
+/* NEED TO EDIT: COMPILING WITH TAILWIND */
+.hidden {
+  display: none;
+}
+
+/* NEED TO EDIT: COMPILING WITH TAILWIND */
+#board>.grid>.cell>span.not-valid {
+  background-color: red;
+  color: white;
+}
+
+/* NEED TO EDIT: COMPILING WITH TAILWIND */
+#board>.grid>.cell>span.disable.not-valid {
+  --tw-bg-opacity: 1;
+  background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
+  color: red;
+}
+
 *,
 ::before,
 ::after {
@@ -42,7 +60,7 @@ html {
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
   /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
@@ -81,7 +99,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -348,14 +366,16 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
   /* 2 */
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
@@ -431,7 +451,7 @@ html {
   color: hsl(251 2% 24% / var(--tw-text-opacity));
 }
 
-body{
+body {
   display: flex;
   height: 100vh;
   width: 100%;
@@ -439,14 +459,16 @@ body{
   padding: 1rem;
 }
 
-table{
+table {
   width: 100%;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
-*, ::before, ::after{
+*,
+::before,
+::after {
   --tw-translate-x: 0;
   --tw-translate-y: 0;
   --tw-rotate: 0;
@@ -454,16 +476,16 @@ table{
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -607,7 +629,7 @@ table{
   display: flex;
 }
 
-.grid{
+.grid {
   display: grid;
 }
 
@@ -619,31 +641,31 @@ table{
   aspect-ratio: 1 / 1;
 }
 
-.h-full{
+.h-full {
   height: 100%;
 }
 
-.w-full{
+.w-full {
   width: 100%;
 }
 
-.max-w-md{
+.max-w-md {
   max-width: 28rem;
 }
 
-.grid-cols-3{
+.grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.grid-cols-5{
+.grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.grid-rows-3{
+.grid-rows-3 {
   grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
-.flex-col{
+.flex-col {
   flex-direction: column;
 }
 
@@ -711,16 +733,16 @@ table{
   text-align: center;
 }
 
-.text-3xl{
+.text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-.font-bold{
+.font-bold {
   font-weight: 700;
 }
 
-.text-primary-base{
+.text-primary-base {
   --tw-text-opacity: 1;
   color: hsl(142 72% 29% / var(--tw-text-opacity));
 }
@@ -739,23 +761,23 @@ table{
   outline-style: solid;
 }
 
-.outline-1{
+.outline-1 {
   outline-width: 1px;
 }
 
-.outline-white{
+.outline-white {
   outline-color: #fff;
 }
 
-.outline-primary-base{
+.outline-primary-base {
   outline-color: hsl(142, 72%, 29%);
 }
 
-.filter{
+.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.cell{
+.cell {
   display: flex;
   aspect-ratio: 1 / 1;
   width: 100%;
@@ -768,7 +790,7 @@ table{
   outline-color: hsl(251, 9%, 65%);
 }
 
-.cell > span{
+.cell>span {
   display: flex;
   height: 100%;
   width: 100%;
@@ -803,7 +825,8 @@ table{
   background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
 }
 
-.cell > span.active, #key button.active{
+.cell>span.active,
+#key button.active {
   --tw-bg-opacity: 1;
   background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
@@ -828,7 +851,7 @@ table{
   }
 }
 
-#key button{
+#key button {
   aspect-ratio: 1 / 1;
   width: 100%;
   border-radius: 9999px;
