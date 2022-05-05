@@ -34,6 +34,7 @@ const assignValue = (value) => {
 	const selectedCell = document.querySelector(".cell #selected");
 	if (selectedCell && !selectedCell.classList.contains("disable")) {
 		selectedCell.textContent = value;
+		console.log(selectedCell.textContent);
 		value != ""
 			? activate([...cells].filter((elm) => elm.textContent == value))
 			: "";
@@ -181,12 +182,14 @@ keyBtns.forEach((keyBtn) => {
 		} finally {
 			if (!keyBtn.classList.contains("active")) {
 				deactivate();
-				activate(
-					[...cells]
-						.filter((elm) => elm.textContent == keyBtn.textContent)
-						.concat(keyBtn)
-				);
-				keyBtn.id = "selected";
+				keyBtn.textContent > 0 || keyBtn.textContent < 0
+					? activate(
+						[...cells]
+							.filter((elm) => elm.textContent == keyBtn.textContent)
+							.concat(keyBtn),
+						keyBtn.id = "selected"
+					)
+					: "";
 			} else {
 				deactivate();
 			}
