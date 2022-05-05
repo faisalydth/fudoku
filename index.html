@@ -14,6 +14,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="./img/ico/fudoku-full-wbg.ico" />
 
   <!-- CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
   <link rel="stylesheet" href="./css/style.css" />
 
   <!-- JavaScript -->
@@ -24,9 +25,201 @@
 <body>
 
   <section id="main" class="flex flex-col justify-around h-full w-full max-w-md">
-    <h1 class="text-3xl font-bold text-center">
-      <span class="text-primary-base">F</span>UDOKU
-    </h1>
+    <header class="border-b-4 border-accent-dark relative">
+      <!-- NAVIGATION BUTTON LEFT -->
+				<div class="absolute left-0 mx-2">
+					<!-- Button -->
+					<button class="nav-bttn ">
+						<i class="uil uil-question-circle"></i>
+					</button>
+
+					<!-- Popup -->
+					<section class="popup hidden">
+						<div id="game-info" class="popup-container">
+							<button class="popup-close">
+								<i class="uil uil-times"></i>
+							</button>
+
+							<h2 class="popup-title">CARA BERMAIN</h2>
+
+							<div class="flex flex-col gap-2 mb-4">
+								<p>
+									Tebak <b><span class="text-primary-base">F</span>UDOKU</b> dalam 6
+									kesempatan. Permainan ini berisi 6000+ kata rahasia.
+								</p>
+								<p>
+									Setiap tebakan harus merupakan kata dengan 5 huruf yang
+									tersedia di KBBI. Tekan tombol ENTER untuk mengirimkan
+									jawaban.
+								</p>
+								<p>
+									Setelah jawaban dikirimkan, warna kotak akan berubah untuk
+									menunjukkan seberapa dekat tebakanmu dari kata rahasia.
+								</p>
+							</div>
+
+							<div>
+								<h3 class="">Contoh</h3>
+								<p>Kata rahasia (yang ditebak) adalah <b>SEMUA</b>.</p>
+								<div class="flex gap-1 py-2">
+									<span class="board-char-ex box-grey">L</span>
+									<span class="board-char-ex box-grey">A</span>
+									<span class="board-char-ex box-green">M</span>
+									<span class="board-char-ex box-grey">P</span>
+									<span class="board-char-ex box-orange">U</span>
+								</div>
+								<div class="flex flex-col">
+									<p>Huruf <b>M</b> ada dan posisinya sudah tepat.</p>
+									<p>Huruf <b>U</b> ada dan posisinya belum tepat.</p>
+									<p>
+										Huruf <b>L</b>, <b>A</b>, dan <b>P</b> tidak ada di kata
+										rahasia.
+									</p>
+								</div>
+							</div>
+              
+						</div>
+					</section>
+				</div>
+
+      <h1 class="text-3xl font-bold text-center">
+        <span class="text-primary-base">F</span>UDOKU
+      </h1>
+
+      <div class="absolute top-0 right-0 mx-2">
+					<div class="inline-block">
+						<!-- Button -->
+						<button class="nav-bttn">
+							<i class="uil uil-info-circle"></i>
+						</button>
+
+						<!-- Popup -->
+						<section class="popup hidden">
+							<div id="game-stats" class="popup-container">
+								<button class="popup-close">
+									<i id="close" class="uil uil-times"></i>
+								</button>
+
+								<h2 class="popup-title">STATISTIK PERMAINAN</h2>
+
+								<div class="flex justify-between text-center gap-4 mb-4">
+									<div>
+										<p class="stats" id="stats-game">0</p>
+										<p>Dimainkan</p>
+									</div>
+									<div>
+										<p class="stats" id="stats-won">0</p>
+										<p>% Menang</p>
+									</div>
+									<div>
+										<p class="stats" id="stats-str-cur">0</p>
+										<p>Runtutan<br />Saat Ini</p>
+									</div>
+									<div>
+										<p class="stats" id="stats-str-max">0</p>
+										<p>Runtutan<br />Maksimum</p>
+									</div>
+								</div>
+
+								<div class="flex flex-col gap-2">
+									<h3>Distribusi Tebakan</h3>
+									<div class="dist">
+										<p>1</p>
+										<p class="dist-ans box-grey">0</p>
+									</div>
+									<div class="dist">
+										<p>2</p>
+										<p class="dist-ans box-grey">0</p>
+									</div>
+									<div class="dist">
+										<p>3</p>
+										<p class="dist-ans box-grey">0</p>
+									</div>
+									<div class="dist">
+										<p>4</p>
+										<p class="dist-ans box-grey">0</p>
+									</div>
+									<div class="dist">
+										<p>5</p>
+										<p class="dist-ans box-grey">0</p>
+									</div>
+									<div class="dist">
+										<p>6</p>
+										<p class="dist-ans box-grey">0</p>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<div class="inline-block">
+						<!-- Button -->
+						<button class="nav-bttn">
+							<i class="uil uil-setting"></i>
+						</button>
+
+						<!-- Popup -->
+						<section class="popup hidden">
+							<div id="game-sets" class="popup-container flex flex-col justify-between">
+								<button class="popup-close">
+									<i class="uil uil-times"></i>
+								</button>
+
+								<div>
+									<h2 class="popup-title">PENGATURAN</h2>
+
+									<div class="flex justify-between gap-8 pb-2 border-b-2 border-black dark:border-white">
+										<div>
+											<h3>Mode Gelap</h3>
+											<p class="text-xxs md:text-xs">
+												Ubah tampilan warna aplikasi menjadi gelap
+											</p>
+										</div>
+
+										<label class="switch">
+											<input id="dark-mode" type="checkbox" class="hidden" />
+											<div class="slider"></div>
+										</label>
+									</div>
+								</div>
+
+								<div>
+									<h3 class="text-center mb-2 md:mb-4">Informasi Aplikasi</h3>
+
+									<div class="mb-2 md:mb-4">
+										<p>
+											<b>KAT<span style="color: red">F</span>A</b> by
+											<a href="https://github.com/faisalydth" target="_blank"><i
+													class="uil uil-github mr-1"></i>faisalydth
+											</a>
+											&#215;
+											<a href="https://github.com/farrelfay" target="_blank"><i
+													class="uil uil-github mr-1"></i>farrelfay</a>
+										</p>
+
+										<div class="text-xxs md:text-sm text-slate-500">
+											<p>v1.0.0 - 17 April 2022</p>
+											<p>
+												v1.1.0 - 24 April 2022
+												<a href="https://github.com/faisalydth/katla-imitation" target="_blank"
+													class="text-xxs md:text-xs text-slate-400">
+													[Lihat Source Code]
+												</a>
+											</p>
+										</div>
+									</div>
+
+									<div>
+										<p class="text-xxs md:text-xs text-center">
+											Inspired by Katla & Wordle
+										</p>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+    </header>
 
     <!-- BOARD -->
     <section id="board" class="grid grid-cols-3 grid-rows-3 outline outline-1 outline-white  aspect-square w-full">
