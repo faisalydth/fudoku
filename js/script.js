@@ -6,7 +6,7 @@ function randInt(min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 const activate = (elm) => {
 	if (elm.length) {
@@ -154,12 +154,10 @@ cells.forEach((cell) => {
 				}
 			}
 		} else {
-			// console.log(true);
+			if (selectedKey && !selectedKey.classList.contains("active"))
+				selectedKey.id = "";
 			deactivate();
 		}
-
-		if (selectedKey && !selectedKey.classList.contains("active"))
-			selectedKey.id = "";
 	});
 });
 
@@ -167,7 +165,8 @@ cells.forEach((cell) => {
 keyBtns.forEach((keyBtn) => {
 	keyBtn.addEventListener("click", () => {
 		let selectedCell = document.querySelector(".cell span#selected");
-		if (selectedCell) {
+		let selectedKey = document.querySelector("#key button#selected");
+		if (selectedCell && !selectedKey) {
 			assignValue(
 				keyBtn.textContent > 0 || keyBtn.textContent < 0
 					? keyBtn.textContent
@@ -175,7 +174,7 @@ keyBtns.forEach((keyBtn) => {
 			);
 		}
 		try {
-			document.querySelector("#key button#selected").id = "";
+			selectedKey.id = "";
 		} catch (e) {
 			console.error();
 		} finally {
@@ -214,6 +213,6 @@ document.addEventListener("keydown", (key) => {
 			document.querySelectorAll("#selected").forEach((el) => {
 				el.id = "";
 			});
-		} catch (error) { }
+		} catch (error) {}
 	}
 });
