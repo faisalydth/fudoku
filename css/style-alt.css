@@ -1,0 +1,66 @@
+.justify-center {
+	justify-content: center
+}
+
+.cell > span.not-valid{
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 29 72 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(251 5% 94% / var(--tw-text-opacity));
+}
+
+.cell > span.disable.not-valid{
+  --tw-bg-opacity: 0.7;
+}
+
+#difficulty-opt {
+  margin-top: 1rem;
+}
+
+#difficulty {
+  border: 1px solid;
+  border-radius: 0.25rem;
+  min-width: 10rem;
+}
+
+#new-game button {
+  border: 1px solid;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+#btns>button {
+  padding: 0.25rem 1rem;
+}
+
+#btns>button>span {
+  display: flex;
+  height: 1.25rem;
+  width: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  --tw-bg-opacity: 1;
+  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(251 5% 94% / var(--tw-text-opacity));
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+#btns>button>span.disable{
+  --tw-bg-opacity: 1;
+  background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
+  --tw-text-opacity: 0.3;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+#fudoku-circle {
+	padding: 0.25rem;
+	border-radius: 50%;
+	max-height: 100px;
+	background-color: white;
+}

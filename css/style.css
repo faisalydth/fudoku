@@ -42,7 +42,7 @@ html {
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-  tab-size: 4;
+     tab-size: 4;
   /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
@@ -81,7 +81,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 /*
@@ -348,16 +348,14 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
   /* 2 */
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
@@ -433,7 +431,7 @@ html {
   color: hsl(251 2% 24% / var(--tw-text-opacity));
 }
 
-body {
+body{
   display: flex;
   height: 100vh;
   width: 100%;
@@ -441,16 +439,21 @@ body {
   padding: 1rem;
 }
 
-table {
+.dark body{
+  --tw-bg-opacity: 1;
+  background-color: hsl(220 41% 10% / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(251 5% 94% / var(--tw-text-opacity));
+}
+
+table{
   width: 100%;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
-*,
-::before,
-::after {
+*, ::before, ::after{
   --tw-translate-x: 0;
   --tw-translate-y: 0;
   --tw-rotate: 0;
@@ -458,16 +461,16 @@ table {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x: ;
-  --tw-pan-y: ;
-  --tw-pinch-zoom: ;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-ordinal: ;
-  --tw-slashed-zero: ;
-  --tw-numeric-figure: ;
-  --tw-numeric-spacing: ;
-  --tw-numeric-fraction: ;
-  --tw-ring-inset: ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -495,6 +498,10 @@ table {
   --tw-backdrop-sepia:  ;
 }
 
+.nav-bttn .fa-solid{
+  font-size: 75%;
+}
+
 .nav-bttn{
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -518,19 +525,21 @@ table {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-	max-height: 100%;
-	min-height: 90%;
-	max-width: 480px;
-	width: 90%;
+  max-height: 100vh;
+  min-height: 80%;
+  width: 90%;
+  max-width: 24rem;
   overflow: auto;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   font-size: 75%;
+}
+
+.dark .popup-container{
+  --tw-bg-opacity: 1;
+  background-color: hsl(220 41% 10% / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px){
@@ -555,6 +564,7 @@ table {
 }
 
 .popup-title{
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   text-align: center;
   font-size: 125%;
@@ -574,12 +584,12 @@ table {
   left: 0px;
 }
 
-.top-0{
-  top: 0px;
-}
-
 .right-0{
   right: 0px;
+}
+
+.top-0{
+  top: 0px;
 }
 
 .mx-2{
@@ -591,6 +601,10 @@ table {
   margin-bottom: 1rem;
 }
 
+.mt-1{
+  margin-top: 0.25rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -599,19 +613,19 @@ table {
   margin-right: 0.25rem;
 }
 
-.block{
-  display: block;
+.ml-1{
+  margin-left: 0.25rem;
 }
 
-.inline-block{
-  display: inline-block;
+.block{
+  display: block;
 }
 
 .flex{
   display: flex;
 }
 
-.grid {
+.grid{
   display: grid;
 }
 
@@ -623,36 +637,48 @@ table {
   aspect-ratio: 1 / 1;
 }
 
-.h-full {
+.h-full{
   height: 100%;
 }
 
-.w-full {
+.max-h-24{
+  max-height: 6rem;
+}
+
+.w-full{
   width: 100%;
 }
 
-.max-w-md {
+.min-w-\[10rem\]{
+  min-width: 10rem;
+}
+
+.max-w-md{
   max-width: 28rem;
 }
 
-.grid-cols-3 {
+.grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.grid-cols-5 {
+.grid-cols-5{
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.grid-rows-3 {
+.grid-rows-3{
   grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
-.flex-col {
+.flex-col{
   flex-direction: column;
 }
 
-.justify-center {
-	justify-content: center
+.items-center{
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
 }
 
 .justify-between{
@@ -663,16 +689,8 @@ table {
   justify-content: space-around;
 }
 
-.items-center {
-	align-items: center
-}
-
 .gap-2{
   gap: 0.5rem;
-}
-
-.gap-1{
-  gap: 0.25rem;
 }
 
 .gap-4{
@@ -687,8 +705,16 @@ table {
   gap: 0.75rem;
 }
 
-.border-b-4{
-  border-bottom-width: 4px;
+.rounded{
+  border-radius: 0.25rem;
+}
+
+.rounded-full{
+  border-radius: 9999px;
+}
+
+.border{
+  border-width: 1px;
 }
 
 .border-b-2{
@@ -705,14 +731,38 @@ table {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.py-2{
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.bg-primary-base{
+  --tw-bg-opacity: 1;
+  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
+}
+
+.bg-white{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-primary-dark{
+  --tw-bg-opacity: 1;
+  background-color: hsl(158 95% 23% / var(--tw-bg-opacity));
+}
+
+.p-1{
+  padding: 0.25rem;
 }
 
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .pb-2{
@@ -723,18 +773,37 @@ table {
   text-align: center;
 }
 
-.text-3xl {
+.text-3xl{
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-.font-bold {
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.font-bold{
   font-weight: 700;
 }
 
-.text-primary-base {
+.font-semibold{
+  font-weight: 600;
+}
+
+.text-primary-base{
   --tw-text-opacity: 1;
   color: hsl(142 72% 29% / var(--tw-text-opacity));
+}
+
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-slate-500{
@@ -751,23 +820,27 @@ table {
   outline-style: solid;
 }
 
-.outline-1 {
-  outline-width: 1px;
+.outline-2{
+  outline-width: 2px;
 }
 
-.outline-white {
+.outline-\[1\.75px\]{
+  outline-width: 1.75px;
+}
+
+.outline-white{
   outline-color: #fff;
 }
 
-.outline-primary-base {
+.outline-primary-base{
   outline-color: hsl(142, 72%, 29%);
 }
 
-.filter {
+.filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.cell {
+.cell{
   display: flex;
   aspect-ratio: 1 / 1;
   width: 100%;
@@ -780,15 +853,13 @@ table {
   outline-color: hsl(251, 9%, 65%);
 }
 
-.cell>span {
+.cell > span{
   display: flex;
   height: 100%;
   width: 100%;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   font-size: 1rem;
   line-height: 1.5rem;
   transition-property: all;
@@ -815,12 +886,21 @@ table {
   background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
 }
 
-.cell>span.active,
-#key button.active {
+.dark .cell > span.disable{
+  --tw-bg-opacity: 1;
+  background-color: hsl(251 2% 24% / var(--tw-bg-opacity));
+}
+
+.cell > span.active, #key button.active{
   --tw-bg-opacity: 1;
   background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(251 5% 94% / var(--tw-text-opacity));
+}
+
+.dark .cell > span.active, .dark #key button.active{
+  --tw-bg-opacity: 1;
+  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
 }
 
 .cell > span.not-valid{
@@ -828,6 +908,11 @@ table {
   background-color: rgb(225 29 72 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(251 5% 94% / var(--tw-text-opacity));
+}
+
+.dark .cell > span.not-valid{
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 29 72 / var(--tw-bg-opacity));
 }
 
 .cell > span.disable.not-valid{
@@ -845,7 +930,7 @@ table {
   }
 }
 
-#key button {
+#key button{
   aspect-ratio: 1 / 1;
   width: 100%;
   border-radius: 9999px;
@@ -860,11 +945,21 @@ table {
   transition-duration: 300ms;
 }
 
+.dark #key button{
+  --tw-bg-opacity: 1;
+  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
+}
+
 @media (min-width: 640px){
   #key button{
     font-size: 1.5rem;
     line-height: 2rem;
   }
+}
+
+.dark #key button.active{
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
 }
 
 #key button ~ span{
@@ -880,11 +975,85 @@ table {
   color: hsl(251 9% 65% / var(--tw-text-opacity));
 }
 
-@media (prefers-color-scheme: dark){
-  .dark\:border-white{
-    --tw-border-opacity: 1;
-    border-color: rgb(255 255 255 / var(--tw-border-opacity));
-  }
+#timer span{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+#timer span > span{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.switch{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dark-mode:checked ~ .slider:before{
+  --tw-translate-x: 0.875rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+#dark-mode:checked ~ .slider{
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
+
+.slider{
+  height: 1.25rem;
+  width: 2.25rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  padding: 0.25rem;
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.slider::before{
+  display: block;
+  height: 100%;
+  width: 50%;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  content: var(--tw-content);
+  transition-duration: 300ms;
+}
+
+.hover\:bg-primary-dark:hover{
+  --tw-bg-opacity: 1;
+  background-color: hsl(158 95% 23% / var(--tw-bg-opacity));
+}
+
+.dark .dark\:border-accent-light{
+  --tw-border-opacity: 1;
+  border-color: hsl(251 5% 94% / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-white{
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.dark .dark\:bg-dark{
+  --tw-bg-opacity: 1;
+  background-color: hsl(220 41% 10% / var(--tw-bg-opacity));
+}
+
+.dark .dark\:text-accent-dark{
+  --tw-text-opacity: 1;
+  color: hsl(251 2% 24% / var(--tw-text-opacity));
+}
+
+.dark .dark\:outline-dark{
+  outline-color: hsl(220, 41%, 10%);
 }
 
 @media (min-width: 768px){
@@ -901,56 +1070,4 @@ table {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-}
-
-#difficulty-opt {
-  margin-top: 1rem;
-}
-
-#difficulty {
-  border: 1px solid;
-  border-radius: 0.25rem;
-  min-width: 10rem;
-}
-
-#new-game button {
-  border: 1px solid;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-}
-
-#btns>button {
-  padding: 0.25rem 1rem;
-}
-
-#btns>button>span {
-  display: flex;
-  height: 1.25rem;
-  width: 1.25rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  --tw-bg-opacity: 1;
-  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(251 5% 94% / var(--tw-text-opacity));
-  font-size: 0.75rem;
-  font-weight: 600;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-#btns>button>span.disable{
-  --tw-bg-opacity: 1;
-  background-color: hsl(251 5% 94% / var(--tw-bg-opacity));
-  --tw-text-opacity: 0.3;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-#fudoku-circle {
-	padding: 0.25rem;
-	border-radius: 50%;
-	max-height: 100px;
-	background-color: white;
 }
