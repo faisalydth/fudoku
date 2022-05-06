@@ -947,7 +947,7 @@ table{
 
 .dark #key button{
   --tw-bg-opacity: 1;
-  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px){
@@ -959,7 +959,7 @@ table{
 
 .dark #key button.active{
   --tw-bg-opacity: 1;
-  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
+  background-color: hsl(142 72% 29% / var(--tw-bg-opacity));
 }
 
 #key button ~ span{
